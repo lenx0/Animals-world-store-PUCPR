@@ -137,7 +137,7 @@ public class animalsWorldStore {
 		}
 	}
 
-	public void menuPetStore() {
+	public void menuAws() {
 
 		String menu = "";
 		String entrada;
@@ -216,8 +216,8 @@ public class animalsWorldStore {
 
 	public static void main(String[] args) {
 
-		animalsWorldStore pet = new animalsWorldStore();
-		pet.menuPetStore();
+		animalsWorldStore aws = new animalsWorldStore();
+		aws.menuAws();
 
 	}
 
