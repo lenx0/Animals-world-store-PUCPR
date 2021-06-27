@@ -1,6 +1,6 @@
 package application;
-
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -43,7 +43,6 @@ public class animalsWorldStore {
 	}
 
 	public Cachorro cadastroCachorro() {
-
 		String[] valores = new String[4];
 		String[] nomeVal = { "Nome", "Espécie", "Dono", "Adestrado [sim/não]" };
 		valores = leValores(nomeVal);
@@ -80,8 +79,10 @@ public class animalsWorldStore {
 	}
 
 	public void salvaAnimais(ArrayList<Animal> animais) {
+		File pastaTemp = new File("C:\\temp");
 		ObjectOutputStream outputStream = null;
 		try {
+			pastaTemp.mkdir();
 			outputStream = new ObjectOutputStream(new FileOutputStream("c:\\temp\\animalsWorldStore.dados"));
 			for (int i = 0; i < animais.size(); i++)
 				outputStream.writeObject(animais.get(i));
@@ -105,9 +106,8 @@ public class animalsWorldStore {
 	@SuppressWarnings("finally")
 	public ArrayList<Animal> recuperaAnimais() {
 		ArrayList<Animal> animaisTemp = new ArrayList<Animal>();
-
 		ObjectInputStream inputStream = null;
-
+		
 		try {
 			inputStream = new ObjectInputStream(new FileInputStream("c:\\temp\\animalsWorldStore.dados"));
 			Object obj = null;
@@ -117,7 +117,7 @@ public class animalsWorldStore {
 				}
 			}
 		} catch (EOFException ex) {
-			System.out.println("FINALIZADO");
+			System.out.println("Dados recuperados com sucesso!");
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
 		} catch (FileNotFoundException ex) {
@@ -138,7 +138,6 @@ public class animalsWorldStore {
 	}
 
 	public void menuAws() {
-
 		String menu = "";
 		String entrada;
 		int opc1, opc2;
@@ -215,10 +214,7 @@ public class animalsWorldStore {
 	}
 
 	public static void main(String[] args) {
-
 		animalsWorldStore aws = new animalsWorldStore();
 		aws.menuAws();
-
 	}
-
 }

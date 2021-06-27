@@ -30,7 +30,7 @@ public class Cachorro extends Animal {
 
 	public String toString() {
 		String info = "";
-		info += "Nome: " + this.nome + "\n";
+		info += "Nome do Animal: " + this.nome + "\n";
 		info += "Especie: " + this.especie + "\n";
 		info += "Dono: " + this.dono + "\n";
 		info += "Alimentação: " + alimentacao() + "\n";
